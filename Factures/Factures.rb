@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 
 vente = CSV.read("../PointDeVente/PointDeVente.csv")
 
@@ -29,6 +30,18 @@ CSV.foreach('factures.csv', col_sep: ';').with_index(1) { |row, ln|
     elsif row[13] == "FORF" || row[13] == "REST" then row[15] = 2
     elsif row[13] == "BARA" || row[13] == "BARS" then row[15] = 3
     end
+    jour_presta = row[9].split("/")[0]
+    mois_presta = row[9].split("/")[1]
+    annee_presta = row[9].split("/")[2]
+    date_presta = Date.new(annee_presta.to_i,mois_presta.to_i,jour_presta.to_i)
+    CSV.foreach('../Dates/dates.csv').with_index(1){ |date, ln|
+        if ln == 1 then next end
+        date_cmp = Date.new(date[1].to_i,date[2].to_i,date[3].to_i)
+        if (date_cmp <=> date_presta) == 0 then  
+            row[9] = date[0]
+            next
+        end
+    }
 
     if(row[2] != nil) then
         restau << row
