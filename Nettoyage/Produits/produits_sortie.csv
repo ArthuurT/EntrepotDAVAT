@@ -1,4 +1,4 @@
-IndexPrdVente;CodePrdVente;LibellePrdVente;CodeFamilleVente;LibelleFamilleVente;TauxTva;CodeMC;CodeStatistique;pointDeVente
+IndexPrdVente;CodePrdVente;LibellePrdVente;CodeFamilleVente;LibelleFamilleVente;TauxTva;CodeMC;CodeStatistique;PointDeVente
 1;;Chambre;CH;CHAMBRE;10;CHAMBRE;CHB;HOTEL
 2;FLAMMENATURE;Flammeküsche nature avec lardons;EN;ENTREES;10;RESTAURANT CARTES;REST;RESTAURANT
 3;FLAMMEGRATINEE;Flammeküsche gratin�e;EN;ENTREES;10;RESTAURANT CARTES;REST;RESTAURANT

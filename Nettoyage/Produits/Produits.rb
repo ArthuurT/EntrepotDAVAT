@@ -1,7 +1,7 @@
 require 'csv'
 
 
-headers = CSV.read("produits.csv", col_sep: ';', headers: true, encoding: "utf-8").headers << "pointDeVente"
+headers = CSV.read("produits.csv", col_sep: ';', headers: true, encoding: "utf-8").headers << "PointDeVente"
 produits_sortie = CSV.open("produits_sortie.csv", "w", col_sep: ';', encoding: "utf-8")
 produits_sortie << headers
 
