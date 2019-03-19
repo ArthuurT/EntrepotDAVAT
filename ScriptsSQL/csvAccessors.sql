@@ -11,113 +11,113 @@ DROP FOREIGN TABLE IF EXISTS factures_hotel_csv;
 DROP FOREIGN TABLE IF EXISTS factures_restaurant_csv;
 
 CREATE FOREIGN TABLE IF NOT EXISTS clients_csv(
-	IndexClient INT,
-	NomClient VARCHAR(20),
-	Prenom VARCHAR(20),
-	Telephone VARCHAR(15),
-	Adresse VARCHAR(50),
-	AdrInternet VARCHAR(50),
-	Titre Titre,
-	Pays VARCHAR(20),
-	Nationalite VARCHAR(20),
-	CodePays VARCHAR(5),
-	Region VARCHAR(20),
-	CodePostal VARCHAR(5)
+	index_client INT,
+	nom VARCHAR(20),
+	prenom VARCHAR(20),
+	telephone VARCHAR(15),
+	adresse VARCHAR(50),
+	adr_internet VARCHAR(50),
+	titre type_titre,
+	pays VARCHAR(20),
+	nationalite VARCHAR(20),
+	code_pays VARCHAR(5),
+	region VARCHAR(20),
+	code_postal VARCHAR(5)
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Client\clients_sortie.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS dates_csv(
-	IndexDate INT,
-	Annee SMALLINT,
-	Mois SMALLINT,
-	JOUR SMALLINT,
-	Date DATE,
-	VacancesScolaires BOOLEAN
+	index_date INT,
+	annee SMALLINT,
+	mois SMALLINT,
+	jour SMALLINT,
+	date DATE,
+	vacances_scolaires BOOLEAN
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Dates\dates_sortie.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS meteo_csv(
 	DATE DATE,
-	MAX_TEMPERATURE_C SMALLINT,
-	MIN_TEMPERATURE_C SMALLINT,
-	WINDSPEED_MAX_KMH SMALLINT,
-	TEMPERATURE_MORNING_C SMALLINT,
-	TEMPERATURE_NOON_C SMALLINT,
-	TEMPERATURE_EVENING_C SMALLINT,
-	PRECIP_TOTAL_DAY_MM float8,
-	HUMIDITY_MAX_PERCENT SMALLINT,
-	VISIBILITY_AVG_KM float8,
-	PRESSURE_MAX_MB SMALLINT,
-	CLOUDCOVER_AVG_PERCENT float8,
-	HEATINDEX_MAX_C SMALLINT,
-	DEWPOINT_MAX_C SMALLINT,
-	WINDTEMP_MAX_C SMALLINT,
-	WEATHER_CODE_MORNING SMALLINT,
-	WEATHER_CODE_NOON SMALLINT,
-	WEATHER_CODE_EVENING SMALLINT,
-	OPINION VARCHAR(100),
-	IndexMeteo INT
+	temperature_max SMALLINT,
+	temperature_min SMALLINT,
+	vitesse_vent SMALLINT,
+	temperature_matin SMALLINT,
+	temperature_aprem SMALLINT,
+	temperature_soir SMALLINT,
+	precipitation_journee float8,
+	humidite_max_pourcentage SMALLINT,
+	visibilite_moyenne float8,
+	pression_max SMALLINT,
+	couverture_nuagueuse float8,
+	indice_chaleur_max SMALLINT,
+	alerte_chaleur_max SMALLINT,
+	temperature_vent_max SMALLINT,
+	code_meteo_matin SMALLINT,
+	code_meteo_aprem SMALLINT,
+	code_meteo_soir SMALLINT,
+	opinion VARCHAR(100),
+	index_meteo INT
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Meteo\meteoAixLesBains_sortie.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS produits_csv(
-	IndexPrdVente INT,
-	CodePrdVente VARCHAR(20),
-	LibellePrdVente VARCHAR(50),
-	CodeFamilleVente VARCHAR(5),
-	LibelleFamilleVente VARCHAR(50),
-	TauxTva float8,
-	CodeMC VARCHAR(20),
-	CodeStatistiques VARCHAR(20),
-	PointDeVente pointdevente
+	index_produit INT,
+	code_produit VARCHAR(20),
+	libelle_produit VARCHAR(50),
+	code_famille_vente VARCHAR(5),
+	libelle_famille_vente VARCHAR(50),
+	taux_tva float8,
+	code_mc VARCHAR(20),
+	code_statistique VARCHAR(20),
+	point_de_vente type_point_de_vente
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Produits\produits_sortie.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS modes_reglement_csv(
-	IndexModeReglement INT,
-	CodeModeReglement VARCHAR(3),
-	ModeReglement VARCHAR(20)
+	index_mode_reglement INT,
+	code_mode_reglement VARCHAR(3),
+	mode_reglement VARCHAR(20)
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Reglement\modesReglement.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS factures_hotel_csv(
-	IndexNote INT,
-	IndexClient INT,
-	nbcourverts SMALLINT,
-	DateDepart DATE,
-	DateArrivee DATE,
-	NbAdultes SMALLINT,
-	NbEnfants SMALLINT,
-	Nuitees SMALLINT,
-	IModeReglement INT,
-	DatePrestation DATE,
-	PrixUnitaire float8,
-	Quantite SMALLINT,
-	IProduitVente INT,
-	CodeStatistique VARCHAR(20),
-	LibelleStatistique VARCHAR(200),
-	IndexDate INT,
-	IndexMeteo INT
+	index_note INT,
+	index_client INT,
+	nb_couverts SMALLINT,
+	date_depart DATE,
+	date_arrivee DATE,
+	nb_adultes SMALLINT,
+	nb_enfants SMALLINT,
+	nuitees SMALLINT,
+	index_mode_reglement INT,
+	date_prestation DATE,
+	prix_unitaire float8,
+	quantite SMALLINT,
+	index_produit INT,
+	code_statistique VARCHAR(20),
+	libelle_statistique VARCHAR(200),
+	index_date INT,
+	index_meteo INT
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Factures\facturesHotel_sortie.csv', format 'csv', delimiter ';');
 
 CREATE FOREIGN TABLE IF NOT EXISTS factures_restaurant_csv(
-	IndexNote INT,
-	IndexClient INT,
-	nbcouverts SMALLINT,
-	DateDepart DATE,
-	DateArrivee DATE,
-	NbAdultes SMALLINT,
-	NbEnfants SMALLINT,
-	Nuitees SMALLINT,
-	IModeReglement INT,
-	DatePrestation DATE,
-	PrixUnitaire float8,
-	Quantite SMALLINT,
-	IProduitVente INT,
-	CodeStatistique VARCHAR(20),
-	LibelleStatistique VARCHAR(200),
-	IndexDate INT,
-	IndexMeteo INT
+	index_note INT,
+	index_client INT,
+	nb_couverts SMALLINT,
+	date_depart DATE,
+	date_arrivee DATE,
+	nb_adultes SMALLINT,
+	nb_enfants SMALLINT,
+	nuitees SMALLINT,
+	index_mode_reglement INT,
+	date_prestation DATE,
+	prix_unitaire float8,
+	quantite SMALLINT,
+	index_produit INT,
+	code_statistique VARCHAR(20),
+	libelle_statistique VARCHAR(200),
+	index_date INT,
+	index_meteo INT
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Factures\facturesRestaurant_sortie.csv', format 'csv', delimiter ';');
