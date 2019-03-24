@@ -15,6 +15,7 @@ CREATE TABLE IF NOT EXISTS dimension_date(
 	annee SMALLINT NOT NULL CHECK(annee = EXTRACT (YEAR FROM date)),
 	mois SMALLINT NOT NULL CHECK (mois = EXTRACT (MONTH FROM date)),
 	jour SMALLINT NOT NULL CHECK (jour = EXTRACT (DAY FROM date)),
+	semaine SMALLINT NOT NULL,
 	vacances_scolaire BOOLEAN NOT NULL DEFAULT false
 );
 

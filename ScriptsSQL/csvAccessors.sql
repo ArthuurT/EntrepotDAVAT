@@ -32,6 +32,7 @@ CREATE FOREIGN TABLE IF NOT EXISTS dates_csv(
 	mois SMALLINT,
 	jour SMALLINT,
 	date DATE,
+	semaine SMALLINT,
 	vacances_scolaires BOOLEAN
 ) SERVER my_csv_accessor
 OPTIONS (header 'true', filename 'D:\Universite\Semestre 8\BDDs\Projet\EntrepotDAVAT\Nettoyage\Dates\dates_sortie.csv', format 'csv', delimiter ';');

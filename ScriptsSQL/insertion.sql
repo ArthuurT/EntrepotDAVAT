@@ -7,7 +7,7 @@ DELETE FROM dimension_produit;
 DELETE FROM dimension_client;
 
 INSERT INTO dimension_date 
-SELECT index_date, date, annee, mois, jour, vacances_scolaires
+SELECT index_date, date, annee, mois, jour, semaine, vacances_scolaires
 FROM dates_csv;
 
 INSERT INTO dimension_mode_paiement
